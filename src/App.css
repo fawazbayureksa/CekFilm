@@ -32,7 +32,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.border-EC9700 {
+  border: 1px solid #EC9700 !important;
+}
+
+.bgc-EC9700 {
+  background-color: #EC9700 !important;
 }
