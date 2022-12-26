@@ -2,10 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axiosInstance from '../../components/axios/AxiosInstance';
 import RoutePath from '../../components/RoutePath';
 import Template from '../../components/Template';
-import Carousel from './components/Carousel';
 
 const Home = () => {
 
@@ -15,17 +13,13 @@ const Home = () => {
     const [show, setShow] = useState(false)
 
     useEffect(() => {
-        getData()
-    }, [page])
-
-    const getData = () => {
         let params = {
             apiKey: process.env.REACT_APP_API_KEY,
             s: 'batman',
             page: page
         }
         axios.get(`${process.env.REACT_APP_BASE_API_URL}`, { params }).then(response => {
-            if (page == 1) {
+            if (page === 1) {
                 setData(response.data.Search)
             } else {
                 let newList = data.concat(response.data.Search)
@@ -34,7 +28,10 @@ const Home = () => {
         }).catch(error => {
             console.log(error);
         })
-    }
+
+    }, [page])
+
+
 
     const onDetail = (item) => {
         setShow(true)
